@@ -1,0 +1,90 @@
+package com.app.BrowserAutomation;
+
+import static org.testng.Assert.assertFalse;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.Test;
+
+public class BrowserAutomation {
+
+    @Test
+    public void testFacebookAuthentication() throws InterruptedException {
+        
+
+        // Initialize ChromeDriver
+        WebDriver driver = new ChromeDriver();
+
+        // Open Facebook login page
+        driver.get("https://www.facebook.com");
+        //driver.get("https://www.google.com/");
+
+        // Find username and password input fields and login button
+        WebElement usernameField = driver.findElement(By.id("email"));
+        WebElement passwordField = driver.findElement(By.id("pass"));
+        WebElement loginButton = driver.findElement(By.name("login"));
+
+        // Enter your Facebook credentials (replace with your test account details)
+        usernameField.sendKeys("adminuser@gmail.com");
+        passwordField.sendKeys("@1234567890");
+        Thread.sleep(2000);
+        // Click the login button
+        loginButton.click();
+
+        // Wait for the authentication process (replace with appropriate waiting mechanism)
+
+        // Assert that the login was successful (replace with appropriate verification)
+        assertFalse(driver.getCurrentUrl().contains("facebook.com/home"), "Facebook authentication failed");
+        driver.quit()
+}
+}
+
+
+
+
+package com.app.BrowserAutomation;
+
+
+
+
+
+import static org.testng.Assert.assertFalse;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.Test;
+
+public class SearchEngine {
+
+    @Test
+    public void testGoogleSearch() throws InterruptedException {
+        
+
+        // Initialize ChromeDriver
+        WebDriver driver = new ChromeDriver();
+
+        // Open Google search page
+        driver.get("https://www.google.com");
+
+        // Find the search input field and search button
+        WebElement searchField = driver.findElement(By.name("q"));
+        WebElement searchButton = driver.findElement(By.id("APjFqb"));
+
+        // Enter your search query
+        searchField.sendKeys("Regression Testing");
+        Thread.sleep(2000);
+        // Click the search button
+        searchButton.click();
+
+        // Wait for the search results page (replace with appropriate waiting mechanism)
+
+        // Assert that the search results are displayed (replace with appropriate verification)
+        assertFalse(driver.getTitle().contains("Regression Testing"), "Google search failed");
+        //close browser
+        //driver.quit();
+    }
+}
